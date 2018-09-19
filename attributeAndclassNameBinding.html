@@ -1,0 +1,61 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+
+    <div id="root">
+        <h1>{{title}}</h1>
+        <ul>
+            <li v-for='name in names'> {{name}}</li>
+        <!-- <li v-for='name in names' v-text="name"> </li> -->
+        </ul>
+        <input type="text" id='input' v-model='newName'>
+        <button v-on:click="addName" v-bind>add name</button>
+        <!-- <button @click="addName">add name</button> -->
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script>
+    // var obj = {
+    //     title : 'EventListener'
+    // }
+    var selectTitle = document.querySelector('title');
+    selectTitle.innerHTML = obj.title;
+
+    var example2 = new Vue({
+        el:'#root',
+        data:{
+            title: obj.title,
+            newName : '',
+            names: ['Joe', 'Mary', 'Jane', 'Jack']
+        },
+        methods: {
+            addName() {
+                //alert('add')
+                //let name = document.querySelector('#input');
+                this.names.push(this.newName);
+                this.newName = ''; // empty the value after add the value to the list
+            }
+        }
+
+    })
+
+    // document.querySelector('button').addEventListener('click', function(e) {
+    //     //alert('add')
+    //     let name = document.querySelector('#input');
+    //     example2.names.push(name.value);
+    //     name.value = ''; // empty the value after add the value to the list
+    // });
+
+
+
+
+</script>
+
+</body>
+</html>
