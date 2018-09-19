@@ -2,3 +2,7 @@ html,body{
     margin:0;
     padding:0;
 }
+
+.color-red{ color: #c13813;}
+.active{ color: #13bbc1 !important; font-size: 2rem !important; background: #341ee4;}
+.add{ color: #eebf18;font-size: 3rem; }

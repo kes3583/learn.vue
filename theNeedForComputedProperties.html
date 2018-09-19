@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .color-red{ color: #c13813;}
+        .active{ color: #13bbc1 !important; font-size: 2rem !important; background: #341ee4;}
+        .add{ color: #eebf18;font-size: 3rem; }
+    </style>
+</head>
+<body>
+
+    <div id="root">
+        <h1>{{ reversedMessage }}</h1>
+        <p>{{ methodReversedMessage() }}</p>
+
+        <h2> All tasks </h2>
+        <ul>
+            <li v-for="task in tasks">{{ task.description }}</li>
+        </ul>
+
+        <h2> Tasks to do </h2>
+        <ul>
+            <!-- <li v-for='task in tasks' v-if='!task.completed'>{{ task.description }}</li> -->
+            <li v-for='task in incompleteTasks '>{{ task.description }}</li>
+        </ul>
+
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script>
+    var title = "theNeedForComputedProperties",
+    selectTitle = document.querySelector('title');
+    selectTitle.innerHTML = title;
+
+    var vm = new Vue({
+        el:'#root',
+        data:{
+            message: 'hello Properties',
+            message2: 'tired of studying!!',
+            tasks:[
+
+                { description:'go to the store', completed: true },
+                { description:'Finish the homework', completed: false },
+                { description:'vacume the house', completed: false },
+                { description:'throw the rubbish away', completed: true },
+                { description:'Cook dinner', completed: false }
+            ]
+
+        },
+        computed:{
+            reversedMessage(){
+                return this.message.split(' ').reverse().join(' ');
+            },
+            incompleteTasks(){
+                return this.tasks.filter(task => !task.completed);
+
+                // this.tasks.filter(function(task){
+                //     return !task.completed;
+                // })
+            }
+        },
+        methods:{
+            methodReversedMessage(){
+                //In cases where you do not want caching, use a method instead.
+                return this.message2.split('').reverse().join('');
+            }
+        }
+    })
+    //vm.message = 'Hello!'
+
+
+
+</script>
+
+</body>
+</html>
