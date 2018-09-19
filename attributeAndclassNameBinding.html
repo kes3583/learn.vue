@@ -4,44 +4,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .color-red{ color: #c13813;}
+        .active{ color: #13bbc1 !important; font-size: 2rem !important; background: #341ee4;}
+        .add{ color: #eebf18;font-size: 3rem; }
+    </style>
 </head>
 <body>
 
     <div id="root">
-        <h1>{{title}}</h1>
-        <ul>
-            <li v-for='name in names'> {{name}}</li>
-        <!-- <li v-for='name in names' v-text="name"> </li> -->
-        </ul>
-        <input type="text" id='input' v-model='newName'>
-        <button v-on:click="addName" v-bind>add name</button>
-        <!-- <button @click="addName">add name</button> -->
+        <h1 :class='className'>{{title}}</h1>
+
+        <!-- <button v-on:click='method' v-bind:title='title'>Hover over me </button> -->
+        <p :class="[{active : isActive }, addClass ]">active...</p>
+        <button @click='toggleClass' :title='title'>toggle me</button>
     </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 <script>
-    // var obj = {
-    //     title : 'EventListener'
-    // }
-    var selectTitle = document.querySelector('title');
-    selectTitle.innerHTML = obj.title;
 
-    var example2 = new Vue({
+    // var selectTitle = document.querySelector('title');
+    // selectTitle.innerHTML = obj.title;
+
+    var app = new Vue({
         el:'#root',
         data:{
-            title: obj.title,
-            newName : '',
-            names: ['Joe', 'Mary', 'Jane', 'Jack']
+            title: 'title is being set through Javascript',
+            className:'color-red',
+            isActive: false,
+            addClass: 'add'
         },
         methods: {
-            addName() {
-                //alert('add')
-                //let name = document.querySelector('#input');
-                this.names.push(this.newName);
-                this.newName = ''; // empty the value after add the value to the list
+            toggleClass() {
+                //this.isActive = isActive ? this.isActive = false : this.isActive = true;
+                if(this.isActive){
+                    this.isActive = false;
+                }else{
+                    this.isActive = true;
+                }
+
+
             }
-        }
+        },
 
     })
 
