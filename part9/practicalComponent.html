@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <style media="screen">
+        .container {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="root" class="container">
+        <!-- <message title="message">hahaha</message>
+        <message title="Success" class="is-success">hahaha</message>
+        <message title="info" class="is-info">hahaha</message> -->
+
+
+        <message-box v-for="msg in messages" v-bind:msg="msg" v-bind:class="msg.className"></message-box>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script src="index.js"></script>
+
+
+</body>
+</html>
