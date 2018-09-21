@@ -8,10 +8,9 @@ Vue.component('tabs', {
   <div>
     <div class="tabs">
       <ul>
-        <li class="is-active"><a>Pictures</a></li>
-        <li><a>Music</a></li>
-        <li><a>Videos</a></li>
-        <li><a>Documents</a></li>
+        <li v-for="tab in tabs" :class="{'is-active': tab.isActive}">
+          <a :href="tab.href" @click="selectTab(tab)">{{tab.name}}</a>
+        </li>
       </ul>
     </div>
     <div class="table-contents">
@@ -19,26 +18,43 @@ Vue.component('tabs', {
     </div>
   </div>
   `,
-  // //data() {
-  //   return {
-  //     isActive : 'is-active',
-  //     tabs: [
-  //       { title:'tab1', isActive: true, content: 'tab1 content'},
-  //       { title:'tab2', isActive: false, content: 'tab1 content'},
-  //       { title:'tab3', isActive: false, content: 'tab1 content'}
-  //     ]
-  //   }
-  // },
-  mounted(){
-    console.log(this.$children)
+  data(){
+    return { tabs : [] };
+  },
+  created(){
+    this.tabs = this.$children;
+    console.log(this.tabs)
+  },
+  methods:{
+    selectTab(selectedTab){
+      //console.log(selectedTab.name)
+      this.tabs.forEach(tab => {
+        tab.isActive = (tab.name == selectedTab.name)
+      })
+
+    }
   }
 })
 Vue.component('tab',{
   props:{
-    name:{required: true}
+    name : { required : true },
+    selected: {defalut : false}
+  },
+  data(){
+    return{
+      isActive : false
+    }
+  },
+  computed:{
+    href(){
+      return '#' + this.name.toLowerCase().replace(/ /g, '-');
+    }
+  },
+  mounted(){
+    this.isActive = this.selected
   },
   template : `
-    <div><slot></slot></div>
+    <div :id="this.name" v-show="isActive" ><slot></slot></div>
   `
 })
 
