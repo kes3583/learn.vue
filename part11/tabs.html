@@ -14,11 +14,10 @@
 <body>
 
     <div id="root" class="container">
-        <modal v-if="showModal" @close="showModal=false">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.</p>
-        </modal>
-
-        <button @click="showModal=true" class="button is-link is-rounded">show modal</button>
+      <tabs>
+        <tab></tab>
+      </tabs>
+      
     </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
