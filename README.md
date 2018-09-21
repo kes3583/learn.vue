@@ -19,6 +19,7 @@ learning vue.js
 data () {
     return {test:1}
 }
+.replace(/ |(')/gi, "-")
 
 - part10 -- practical component Exercise 2 modal
 - part9 -- practical component Exercise 1 message
