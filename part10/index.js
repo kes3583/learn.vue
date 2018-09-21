@@ -1,4 +1,4 @@
-const title = "practical component Exercise 1 message",
+const title = "practical component Exercise 2 Modal",
 selectTitle = document.querySelector('title');
 selectTitle.innerHTML = title;
 

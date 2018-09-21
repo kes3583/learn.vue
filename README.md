@@ -10,6 +10,9 @@ learning vue.js
 
 # to done lists
 - 21.09.2018 - part11 -- practical component Exercise 2
+-- https://codesandbox.io/
+-- Passing Static or Dynamic Props
+
 - part10 -- practical component Exercise 2 modal
 - part9 -- practical component Exercise 1 message
 - part8 -- components within Components
