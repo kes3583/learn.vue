@@ -14,7 +14,7 @@
 <body>
 
     <div id="root">
-        <h1>{{ reversedMessage }}</h1>
+        <h1>{{ reversedMessage }}</h1>  
         <p>{{ methodReversedMessage() }}</p>
 
         <h2> All tasks </h2>
@@ -56,7 +56,8 @@
                 return this.message.split(' ').reverse().join(' ');
             },
             incompleteTasks(){
-                return this.tasks.filter(task => !task.completed);
+                console.table(this.tasks.filter(task => !task.completed))
+                return this.tasks.filter(task => !task.completed); //return new Array
 
                 // this.tasks.filter(function(task){
                 //     return !task.completed;

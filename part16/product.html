@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="nav">
+	<ul class="top-nav list-unstyled">
+		<li><a href="#home">My H&M</a></li>
+		<li><a href="#home">Sign in/Join</a></li>
+		<li>
+			<a href="#home">Shopping bag (123)</a>
+	 </li>
+	</ul>
+	<nav class="primary-menu"><!-- Primary menu -->
+    <ul>
+			<li><a href="#home">women</a></li>
+    	<li><a href="#home">divided</a></li>
+    	<li><a href="#home">men</a></li>
+    	<li><a href="#home">kids</a></li>
+    	<li><a href="#home">h&m home</a></li>
+    	<li><a href="#home">sale</a></li>
+    	<li><a href="#home">#hmxme</a></li>
+    </ul>
+  </nav>
+</div>
+
+
+<div class="product">
+
+  <div class="container">
+  	<figure>
+  		<img src="https://lp2.hm.com/hmgoepprod?set=source[/ed/b0/edb02bbfcaf5de4729e8a04944ec8bf559b84feb.jpg],origin[dam],category[ladies_dresses_shortdresses],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]" alt="" >
+  		<img src="https://lp2.hm.com/hmgoepprod?set=source[/ed/b0/edb02bbfcaf5de4729e8a04944ec8bf559b84feb.jpg],origin[dam],category[ladies_dresses_shortdresses],type[LOOKBOOK],res[s],hmver[1]&call=url[file:/product/main]" alt="" >
+  	</figure>
+
+  	<div class="left">
+      <div class="sticky">
+        <div class="child">Fixed positioned element
+  			Syntax Selection
+          The Sass command-line tool will use the file extension to determine which syntax you are using, but there's not always a filename. The sass command-line program defaults to the indented syntax but you can pass the --scss option to it if the input should be interpreted as SCSS syntax. Alternatively, you can use the scss command-line program which is exactly like the sass program but it defaults to assuming the syntax is SCSS.
+
+    			</div>
+        </div>
+    </div>
+  </div>
+
+</div>
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<!-- <script src="index.js"></script> -->
+<script type="text/javascript">
+
+(function (window, document, undefined) {
+'use strict';
+/**
+ * Selectors
+ */
+var left = document.querySelector('.left');
+var nav = document.querySelector('.nav');
+console.log(nav)
+
+/**
+ * Methods
+ */
+
+var stickyFx = () => {
+  const navHeight = getElementHeight(nav);
+  if (window.pageYOffset >= navHeight) {
+    left.classList.add("sticky-wrapper")
+  } else {
+    left.classList.remove("sticky-wrapper");
+  }
+}
+
+// get the height of div with padding + margin + border
+var getElementHeight = function(el){
+
+  const height = el.getBoundingClientRect().height,
+        style = window.getComputedStyle(el);
+
+  // height: element height + vertical padding & borders
+  // now we just need to add vertical margins
+    const divHeight = ["top", "bottom"]
+      .map(obj => {
+        return parseInt(style['margin-' + obj], 10)
+      })
+      .reduce((total, obj) => {
+        return total + obj
+      }, height)
+
+    return divHeight;
+}
+
+
+
+//console.log('navHeight',navHeight)
+/**
+ * Events/APIs/init
+ */
+
+window.onscroll = function() {stickyFx()};
+
+
+
+})(window, document);
+</script>
+</body>
+</html>

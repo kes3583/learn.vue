@@ -1,0 +1,75 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <style media="screen">
+        .container {
+            padding: 10px;
+            border:1px solid red;
+            width:300px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="root" class="container">
+      <coupon @applied="onCouponApplied"></coupon>
+      <p v-if="couponApplied">Coupon applied!</p>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+<script>
+
+const title = "Event Dispatcher",
+selectTitle = document.querySelector('title');
+selectTitle.innerHTML = title;
+
+window.Event = new class{
+  constructor(){
+    this.vue= new Vue();
+  }
+
+  fire(event, data = null){
+      this.vue.$emit(event, data);
+
+  }
+
+  listen(event, callback){
+    this.vue.$on(event,callback)
+  }
+}
+
+Vue.component('coupon', {
+  //props: ['title'],
+  template: `
+  <div class="coupon">
+    <input  type="input" placeholder="Enter your coupon code!" @blur="onCouponApplied"/>
+  </div>
+  `,
+  methods:{
+    onCouponApplied(){ //after removing focus from the text field.
+      Event.fire('applied')
+    }
+  }
+
+})
+
+new Vue({
+  el: '#root',
+  data:{
+    couponApplied: false
+  },
+
+  created(){
+    Event.listen('applied', () => alert('Handling it!'))
+  }
+})
+</script>
+
+
+</body>
+</html>

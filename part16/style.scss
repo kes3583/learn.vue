@@ -1,0 +1,126 @@
+//reference - https://www2.hm.com/en_us/productpage.0658859005.html
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+	font-family: 'roboto', Sans-Serif;
+}
+
+
+.menu-link{
+			display: block;
+			text-decoration: none;
+			padding: 0 10px;
+			color: #313131;
+		}
+
+.nav{
+	overflow:hidden;
+	border-bottom: 2px solid #313131;
+  display:block;
+
+	.top-nav {
+		display:flex;
+		justify-content:flex-end;
+		margin-bottom:20px;
+		padding:20px 0 0 0;
+
+		list-style-type: none;
+		//background:#313131;
+		> li{
+			font-size:12px;
+
+			> a{
+				@extend .menu-link;
+				padding: 0 10px;
+
+			}
+		}
+	}
+
+	.primary-menu{
+		text-align:center;
+		padding:20px 0;
+		> ul{
+			list-style-type:none;
+			display:inline-block;
+			> li{
+				float:left;
+				> a {
+					@extend .menu-link;
+					font-size:14px;
+					font-weight:600;
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+
+}
+
+.product{
+	width:100%;
+	padding:0 40px;
+
+}
+.container{
+	position:relative;
+	width:66%;
+	max-width: calc(100vw - 505px); //465 + 40px
+	width: calc(66vw - 2 * 40px);
+	border:1px solid red;
+  padding:0;
+  margin:0;
+	figure{
+		position:relative;
+		width:100%;
+		max-width: 100% ;
+
+		img{
+			width:100%;
+			position:relative;
+			height:100%;
+		}
+	}
+
+	.left{
+		position: absolute;
+		left: 100%; // 위치맞추기
+		top:0;
+		padding-left: 40px;
+    min-width: 408px;
+    width: 50% !important;
+		width: calc( 34vw - 17px ) !important;
+
+		.sticky{
+			max-width: 370px;
+    	width: auto;
+			background:red;
+			.child{
+				margin-top:40px;
+				font-size:15px;
+				background:red;
+
+			}
+
+		}
+	}
+
+	.sticky-wrapper{
+
+
+
+		position:fixed;
+		//left:66%;
+		//padding-left:0;
+
+	}
+
+
+}
+@media screen and (min-width:768px){
+  .container .sticky-wrapper{/* left:66%; */left:calc(66vw - 40px); }
+}
+@media screen and (max-width:1255px) and (min-width:768px){
+	.container .sticky-wrapper{left:calc(100vw - 465px); }
+}
