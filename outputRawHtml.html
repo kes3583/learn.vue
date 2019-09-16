@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+
+	<div id="app">
+    <h1>{{ title }}</h1>
+		<p>{{ sayHello() }}</p>
+    <a v-bind:href="linkGoogle"> Google </a>
+    <p>{{ finishedLink }}</p>
+    <p v-html='finishedLink'></p>
+
+	</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script>
+		new Vue({
+			el: '#app',
+			data: {
+				title: 'Hello world!',
+        linkGoogle : 'http://google.com',
+        finishedLink : '<a href="http://google.com">Google</a>'
+			},
+			methods : {
+				sayHello(){
+          this.title = 'Hello!'
+					return this.title
+				}
+			}
+		})
+    // var example2 = new Vue({
+    //     el:'#app',
+    //     data:{
+    //         title: obj.title,
+    //         names: ['Joe', 'Mary', 'Jane', 'Jack']
+    //     },
+    //     mounted() { // when all the data is ready
+    //         document.querySelector('#button').addEventListener('click', function(e) {
+    //             let name = document.querySelector('#input');
+    //             example2.names.push(name.value);
+    //             name.value = '';
+    //         });
+    //     }
+    // })
+
+</script>
+
+</body>
+</html>

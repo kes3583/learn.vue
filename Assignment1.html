@@ -1,0 +1,43 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+
+	<div id="exercise">
+    <h1>{{ name }}( {{age}} )</h1>
+		<p>{{ age * 3 }}</p>
+    <p>random number between 0 and 1</p>
+    <p>{{ randomNumber() }}</p>
+    <div><img v-bind:src="imgSrc" ></div>
+
+    <input v-bind:value="name" >
+
+
+	</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script>
+		new Vue({
+			el: '#exercise',
+			data: {
+				name: 'Eunsim',
+        age : 35,
+        imgSrc : 'https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&h=350'
+			},
+			methods : {
+				randomNumber(){
+					return Math.random().toFixed(5)
+				}
+			}
+		})
+
+
+</script>
+
+</body>
+</html>
