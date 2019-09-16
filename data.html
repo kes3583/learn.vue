@@ -19,7 +19,8 @@
     // };
     // document.querySelector('#inputText').value = data.message;
     var obj = {
-        title : 'data'
+        title : 'data',
+        msg:'안녕'
     }
     var selectTitle = document.querySelector('title');
     selectTitle.innerHTML = obj.title;
@@ -27,7 +28,7 @@
         el:'#inputText',
         data:{
             title: obj.title,
-            message: "hello world"
+            message: obj.msg
         }
     })
 

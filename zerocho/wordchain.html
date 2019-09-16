@@ -1,0 +1,86 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+</head>
+
+<body>
+
+  <div id="root">
+    <h1>{{title}}</h1>
+    <!-- html안에서는 케밥케이스 사용필수 - 케밥케이스가 자동으로 케말케이스로 바뀜 -->
+    <wordchain-box first-word="박수무당"></wordchain-box>
+    <wordchain-box first-word="언제"></wordchain-box>
+    <wordchain-box first-word="스투키"></wordchain-box>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+  <script>
+    var obj = {
+      title: 'lists'
+    }
+    var selectTitle = document.querySelector('title');
+    selectTitle.innerHTML = obj.title;
+
+    //전역컴포넌트
+    Vue.component('wordchain-box', {
+      props: ['firstWord'],
+      template: `
+        <form v-on:submit="onSubmitForm" class="" method="post">
+          <ul>
+            <li v-for="name in names"> {{name}}</li>
+          </ul>
+          <input type="text" id="input" v-model="value" ref="answer" placeholder="type here~!">
+          <button id="button" type="submit" >type word</button>
+        </form>
+      `,
+      data(){
+          console.log(this)
+          return {
+            names: [this.firstWord],
+            value: ''
+          }
+      },
+      methods: {
+          onSubmitForm(e) {
+            e.preventDefault();
+
+            let lastletter = this.names[this.names.length - 1].slice(-1);
+            if (this.value) {
+              let firstletter = this.value.slice(0,1); // faster
+
+              if (firstletter === lastletter) {
+                this.names.push(this.value);
+                this.$refs.answer.focus();
+              } else {
+                alert('wrong word! type again!')
+                this.$refs.answer.focus();
+              }
+
+            } else {
+              alert('type a word startring with the last letter of the previous word!')
+              this.$refs.answer.focus();
+            }
+
+            this.value = '';
+        }
+      }
+    })
+
+    const wordchain = new Vue({
+      el: '#root',
+      data: {
+        title: obj.title
+      }
+    })
+  </script>
+
+</body>
+
+</html>
