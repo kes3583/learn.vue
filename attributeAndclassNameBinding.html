@@ -12,14 +12,13 @@
     </style>
 </head>
 <body>
-
     <div id="root">
         <h1 :class='className'>{{title}}</h1>
 
         <!-- <button v-on:click='method' v-bind:title='title'>Hover over me </button> -->
         <p :class="[{active : isActive }, addClass ]">active...</p>
         <button @click='toggleClass' :title='title'>toggle me</button>
-        <!-- <button :disabled="isDisabled" @click='buttonDisabled' :title='title'>toggle me</button> -->
+        <button :disabled="isDisabled" @click='buttonDisabled' :title='title'>toggle me</button>
     </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
@@ -33,7 +32,7 @@
         data:{
             title: 'title is being set through Javascript',
             className:'color-red',
-            isActive: false,
+            isActive: true,
             addClass: 'add',
             isDisabled: false
         },
