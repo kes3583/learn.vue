@@ -1,0 +1,287 @@
+/*** 09092019 ***/
+/*** default ***/
+html {
+  line-height: 1.15;
+  /* 1 */
+  box-sizing: border-box;
+  font-size: 10px;
+  -webkit-text-size-adjust: 100%;
+  /* Prevent font scaling in landscape while allowing user zoom */
+}
+
+body, ol, ul {
+  margin: 0;
+  padding: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-family: 'skpgo_MM';
+  font-weight: normal;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+/*** common ***/
+
+/** color **/
+.fc-737373{color: #737373 !important}
+
+/** margin-padding **/
+.mt5 {
+  margin-top: 5px;
+}
+.mt13 {
+  margin-top: 13px;
+}
+.mt30 {
+  margin-top: 30px;
+}
+
+.pt21 {
+  padding-top: 21px !important
+}
+
+.pb13 {
+  padding-bottom: 13px !important
+}
+
+/* font skpgo_MM / skpgo_LM / skpgo_BM */
+
+/** layout **/
+.oh{overflow:hidden}
+.tc{text-align: center !important}
+
+.fixed {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 10000
+}
+
+._df {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll_{overflow:hidden; overflow-y:scroll; height:100%; -webkit-overflow-scrolling: touch;}
+
+/* button */
+button {
+  overflow: visible;
+}
+
+.btn {
+  display: flex;
+  height: 55px;
+  font-size: 1.6rem;
+  color: #3673ee;
+  border: 0;
+  border-color: #dadce0;
+  position: relative;
+  z-index: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: .009375rem;
+  vertical-align: middle;
+  background-color: #fff;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+.btn-gr {color:#fff;background:#bfbfbf;}
+.btn-bl{ background:#3673ee; color:#fff; }
+
+
+/*** layout ***/
+body {
+  background: #f1f1f1;
+  padding-top: 55px;
+}
+
+/* 상위 내비게이션  */
+header {
+  height: 55px;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 0 20px 0 10px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 301;
+  border-bottom: 1px solid #f0f0f0;
+  text-align:center;
+}
+
+header a {
+  display: inline-block;
+  color: #000;
+  position: absolute;
+  text-align: center;
+}
+
+header a.tit {
+  font-size: 1.8rem;
+  font-family: 'skpgo_BM';
+  position: unset; white-space: nowrap;
+  line-height: 55px;
+}
+
+header a.btn-back {
+  left: 10px; top: 17px;
+  height: 22px;
+  width: 12px;
+  background: url("../images/icon-back.png") 0 0 no-repeat;
+  background-size: 100% 100%;
+  font-size:0;
+}
+
+header a.btn-right {
+  right: 20px; top: 20px;
+  font-size: 1.4rem;
+  color: #333
+}
+
+/* 이벤트 쿠폰 메뉴 */
+.cp-tabs {
+  height: 50px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cp-tabs a {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-family: 'skpgo_BM';
+  color: #000;
+  position:relative;
+}
+
+.cp-tabs a.active{color: #3673ee;}
+.cp-tabs a.active:after {
+	content:'';
+	position:absolute;
+	left:0; 
+	bottom:0;
+	width:100%;
+  	height:3px;
+  	background:#3673ee;
+}
+
+.wrapper h1 {
+  font-size: 1.4rem;
+  color: #666;
+  padding-left: 6px
+}
+
+span.br {
+  display: inline-block;
+  padding: 0 8px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 1rem;
+  border-radius: 3.8rem;
+  background-color: #a1a3a6;
+  color: #fff;
+  font-family: 'roboto-bold';
+  line-height: 1.5;
+}
+
+/* 제휴 services  */
+.detailServices{display:none; z-index:401; position: fixed; left:0; top:55px; width:100%; background: #fff}
+.detailServices ul{}
+.detailServices ul li {border-bottom:1px solid #f9f9f9; height:70px; background:#fff; }
+.detailServices ul li a { display: flex; align-items: center; justify-content: flex-start; padding:0 20px; height:100%; position:relative; font-size:0px; line-height:0px;}
+.detailServices ul li a img {width:40px; height:40px; display:inline-block;margin-right:20px }
+.detailServices ul li a span {display:inline-block; font-size:1.7rem; line-height:64px; color:#000;}
+
+/* modal popup */
+.modal { position: fixed; z-index: 1001; /* 1 */ top: 0; left: 0; visibility: hidden; width: 100%; height: 100%; }
+.modal.is-visible { visibility: visible; }
+.modal-overlay { position: fixed; z-index: 10; top: 0; left: 0; width: 100%; height: 100%; background: hsla(0, 0%, 0%, 0.75); visibility: hidden; opacity: 0;  }
+
+.modal.is-visible .modal-overlay { opacity: 1; visibility: visible; animation-name: fadeIn;
+animation-duration: 0.4s; }
+
+/* modal coupon popup */
+.modal-coupon .modal-wrapper {/* width:calc(100% - 29px); */ width: 330px; height:100%; position: fixed; z-index: 999; top: 0; left: 0; margin:0 15px 0 14px; left:50%; margin-left:-165px}
+.modal-coupon .modal-wrapper .btn-cancel{background:none; justify-content: flex-end}
+.modal-coupon .modal-wrapper h2.logo{height:30px}
+.modal-coupon .modal-content{overflow:hidden; height:500px; padding:20px; background:#fff no-repeat 0 0 url("../images/bg-box.png"); background-size: 100% auto;}
+
+.modal-coupon .modal-content .cp-img{margin-bottom: 20px;}/* img size 580 x 220 */
+.modal-coupon .modal-content .cp-txt{display: flex; flex-direction:column;  align-items: center; justify-content: center; margin:0 8px; font-size: 1.9rem; color:#111; font-family: 'skpgo_BM'; }
+.modal-coupon .modal-wrapper span.br.date{margin-top:15px; padding:2px 8px; font-size:1.2rem; color:#666; background:#f0f0f0; font-family: 'skpgo_BM';}
+.modal-coupon .modal-content .mc-top{height:278px; margin-bottom:27px; background:#fff no-repeat center bottom url("../images/img_dotline.png"); background-size: 302px 1px; }
+.modal-coupon .modal-content .num{font-size:1.8rem; color:#111; font-family: 'roboto-medium'; text-align: center;display: flex; align-items: center; justify-content: center; height:56px; background: #f9f9f9}
+.modal-coupon .modal-content .bcode{background: none}
+.modal-coupon .modal-content .cp-info{padding:19px 0 0 0}
+.modal-coupon .modal-content .cp-info h3{font-size:1.2rem; padding-bottom:3px; color:#a1a3a6; font-family: 'skpgo_BM';}
+.modal-coupon .modal-content .cp-info h3, .modal-content .cp-info p{line-height: 2}
+.modal-coupon .modal-content .cp-info p, .modal-content .cp-info ul > li{font-size:1.2rem; color:#111; font-family: 'skpgo_MM';}
+.modal-coupon .modal-content .cp-info ul > li{padding-left:10px;line-height: 1.5} 
+.modal-coupon .modal-content .cp-info ul > li:before {content:'·'; margin-left:-10px; padding-right:5px; font-size:1.3rem;color:#000; font-family: 'skpgo_BM'; }
+.modal-coupon .modal-wrapper .btns{position:absolute;bottom:16px; width:100%; padding:0 20px; }
+.modal-coupon .modal-wrapper .btn-del{width:100%; height: 50px; padding:0 24px; text-align:left; border-radius: 25px; box-shadow: 0 0.5px 1.5px 0 rgba(0, 0, 0, 0.2), 0 0 0.5px 0 rgba(0, 0, 0, 0.22); background:#e55545 no-repeat right 24px center url("../images/ico-delete.png"); background-size: 24px 24px; font-size:1.3rem; color:#fff;  font-family: 'skpgo_BM';}
+
+/* modal confirm popup */
+.modal-confirm .modal-wrapper{z-index:20; background:#fff; position: relative; margin: 0 25px; top:0; bottom:auto; padding:35px 0 0; border-radius: 8px;}
+.modal-confirm .modal-overlay { z-index: 19; }
+.modal-confirm .modal-wrapper .modal-content{color:#000; font-size:1.8rem; margin-bottom:3.5rem; line-height:1.2; text-align: center; font-family: 'skpgo_BM';}
+.modal-confirm .modal-wrapper .btns{height:5rem;line-height:5rem; color:#fff;font-size:1.6rem;text-align: center;}
+.modal-confirm .btn{font-family: 'skpgo_MM';}
+.modal-confirm .btn-gr{width:50%; border-bottom-left-radius: 8px; }
+.modal-confirm .btn-bl{width:50%; border-bottom-right-radius: 8px; }
+
+/* 이벤트 없음 */
+.noEvent {height:245px; display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;}
+.noEvent div {font-size:13px; color:#a1a3a6; padding-top:70px; text-align:center;background:url("../images/icon_no_event.png") center 0px no-repeat; background-size:40px auto;}
+
+
+/* device 320 ~ */
+@media only screen and (max-width : 359px){
+	
+	.list-coupon li div.txt { font-size: 1.5rem;}
+	.list-coupon li div.txt span.date {font-size: 1.2rem;}
+}
