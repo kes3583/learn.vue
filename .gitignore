@@ -1,6 +1,8 @@
 # Build and Release Folders
 .DS_Store
 node_modules/
+/dist
+dist/
 npm-debug.log
 yarn-error.log
 

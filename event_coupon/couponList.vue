@@ -1,8 +1,8 @@
 <template>
    <section class="container">
 		<h1 class="pt21 pb13">보유 <span class="br num">{{items.length}}</span></h1>
-		<ul class="list-coupon mt5">
-			<li class="modal-toggle" v-for="item in items">
+		<ul class="list-coupon mt5" v-if="items.length">
+			<li class="modal-toggle" v-for="item in items" >
 				<div class="img"><img :src="item.src" alt="" /></div>
 				<div class="txt">
 					{{item.title}}
@@ -10,6 +10,9 @@
 				</div>
 			</li>
 		</ul>
+    <div class="noEvent" v-else>
+			<div>진행중인 이벤트가 없습니다.</div> 
+		</div>
 	</section>
 </template>
 
