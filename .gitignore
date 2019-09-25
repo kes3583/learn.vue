@@ -21,3 +21,6 @@ yarn-error.log
 *.air
 *.ipa
 *.apk
+
+learn.vue.code-workspace
+.history/*
