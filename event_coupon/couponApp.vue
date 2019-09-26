@@ -3,22 +3,71 @@
     <header>
       <a name="" class="btn-back" href="javascript:TmapWebView.closeWebView();"></a>
       <a name="이벤트&쿠폰" class="tit">이벤트&쿠폰</a>
-      <a name="제휴" class="btn-right">제휴</a>
+      <a name="제휴" class="btn-right" @click="showServices($event, 'detailServices')">제휴</a>
 	  </header>
     <app-tab></app-tab>
     <div class="wrapper coupon">
       <app-usableList></app-usableList>
     </div>
+    <app-partnerList></app-partnerList>
+    <app-confirmModal></app-confirmModal>
   </div>
 </template>
 
 <script>
   import CouponTab from './couponTab.vue';
   import CouponList from './couponList.vue';
+  import PartnerList from './partnerList.vue';
+  import ConfirmModal from './confirmModal.vue';
   export default {
     components: {
       'app-tab': CouponTab,
-      'app-usableList': CouponList
+      'app-usableList': CouponList,
+      'app-partnerList': PartnerList,
+      'app-confirmModal': ConfirmModal
+    },
+    data(){
+      return{
+
+      }
+    },
+    methods: {
+      showServices : function(event, el){
+        const wh = window.innerHeight;
+        const hdh = document.querySelector("header");
+        const servicesEl = document.querySelector(".detailServices");
+        const scrollEl = document.querySelector(".scroll_");
+        const btnR = hdh.querySelector(".btn-right")
+
+        event.preventDefault();
+        this.el = document.querySelector('.'+ el) || this.el;
+        if(event.target.classList.contains('is-close')){ 
+          //console.log('close')
+          btnR.textContent = "제휴";
+          event.target.classList.remove("is-close");
+          this.el.style.display = "none";
+          return ;
+        }
+        
+        btnR.textContent = "닫기";
+        btnR.classList.add("is-close");
+        this.el.style.display = "block";
+      
+        
+      },
+    },
+    mounted(){
+      console.log('mounted!')
+      //modal cancel click event
+      const cb = document.querySelectorAll(".btn-cancel");
+      cb.forEach( i => {
+        i.addEventListener('click', (e) => {
+          //console.log(e.target)
+          e.target.closest('.modal').classList.remove('is-visible');
+          document.querySelector('body').classList.remove('oh');
+          bodyScrollLock.enableBodyScroll(scrollEl);
+        });
+      })
     }
   }
 </script>

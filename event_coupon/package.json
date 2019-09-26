@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "eslint": "^6.4.0",
     "file-loader": "^4.2.0",
     "url-loader": "^2.1.0",
     "vue": "^2.6.10"

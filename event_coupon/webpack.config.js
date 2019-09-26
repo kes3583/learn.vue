@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const compiler = require('vue-template-compiler');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -17,13 +18,13 @@ module.exports = {
         use: 'vue-loader'
       },
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [
           'vue-style-loader','css-loader'
         ]
       },
       {
-        test: /\.(png|jpg|gif)$/i,
+        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
         use: [
           {
             loader: 'url-loader',
@@ -38,12 +39,20 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'T map 쿠폰이다',
+      filename: 'test.html',
+      template: './index.html',
+      hash: true,
+    })
   ],
   output:{
     path: path.join(__dirname, 'dist'),
-    filename:'[name].js',
+    filename:'[name].[chunkhash].js',
   },
-  optimization: {},
+  optimization: {
+    
+  },
   resolve : {
     modules: ['node_modules'],
     extensions: ['.js','.json', '.css', '.vue']
