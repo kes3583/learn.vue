@@ -7,33 +7,44 @@
 	  </header>
     <app-tab></app-tab>
     <div class="wrapper coupon">
-      <app-usableList></app-usableList>
+      <app-couponList v-bind:currentItems="currentItems" v-bind:currentTitle="currentTitle"></app-couponList>
     </div>
     <app-partnerList></app-partnerList>
+    <app-couponModal></app-couponModal>
     <app-confirmModal></app-confirmModal>
   </div>
 </template>
 
 <script>
+  //import toggleMixin from './toggleMixin.js';
   import CouponTab from './couponTab.vue';
   import CouponList from './couponList.vue';
   import PartnerList from './partnerList.vue';
-  import ConfirmModal from './confirmModal.vue';
+  import couponModal from './couponModal.vue';
+  import confirmModal from './confirmModal.vue';
+
   export default {
+    name:'app',
     components: {
       'app-tab': CouponTab,
-      'app-usableList': CouponList,
+      'app-couponList': CouponList,
       'app-partnerList': PartnerList,
-      'app-confirmModal': ConfirmModal
+      'app-couponModal': couponModal,
+      'app-confirmModal': confirmModal
     },
     data(){
-      return{
-
-      }
+      return {
+          currentTitle: '보유인가요',
+          currentItems: [
+                {src:'../assets/images/img-sb.png', title: '스타필드가면 시원한 스타벅스 아메리카노 20% 할인',date:'2019년 8월 31일까지' },
+                {src:'../assets/images/img-sb.png', title: '스타필드가면 시원한 스타벅스',date:'2019년 10월 20일까지'},
+                {src:'../assets/images/img-sb.png', title: '스타필드가면 시원한',date:'2022년 8월 31일까지' }
+          ],
+      } 
     },
     methods: {
       showServices : function(event, el){
-        const wh = window.innerHeight;
+
         const hdh = document.querySelector("header");
         const servicesEl = document.querySelector(".detailServices");
         const scrollEl = document.querySelector(".scroll_");
