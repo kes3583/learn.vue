@@ -7,7 +7,8 @@
 	  </header>
     <app-tab></app-tab>
     <div class="wrapper coupon">
-      <app-couponList v-bind:currentItems="currentItems" v-bind:currentTitle="currentTitle"></app-couponList>
+      <app-couponList v-bind:couponData="couponData.usableCoupons" v-bind:couponTitle="hasTitle"></app-couponList>
+      <app-couponList v-bind:couponData="couponData.noUsableCoupons" v-bind:couponTitle="expTitle"></app-couponList>
     </div>
     <app-partnerList></app-partnerList>
     <app-couponModal></app-couponModal>
@@ -34,12 +35,12 @@
     },
     data(){
       return {
-          currentTitle: '보유인가요',
-          currentItems: [
-                {src:'../assets/images/img-sb.png', title: '스타필드가면 시원한 스타벅스 아메리카노 20% 할인',date:'2019년 8월 31일까지' },
-                {src:'../assets/images/img-sb.png', title: '스타필드가면 시원한 스타벅스',date:'2019년 10월 20일까지'},
-                {src:'../assets/images/img-sb.png', title: '스타필드가면 시원한',date:'2022년 8월 31일까지' }
-          ],
+          hasTitle: '보유',
+          expTitle: '만료',
+          couponData: { noUsableCouponCount: 2, noUsableCoupons: [
+                   { couponDisplayTitle: '롯데상품권 교환권 5,000원', couponId: '20116730', src:'../assets/images/img-sb.png', title: '스타필드가면 시원한 스타벅스 아메리카노 20% 할인', date:'2020년 8월 31일까지'},
+                   { couponDisplayTitle: '신세계상품권 교환권 10,000원', couponId: '20121079', src:'../assets/images/img-sb.png', title: '스타필드가면 시원한 스타벅스 아메리카노 20% 할인', date:'2019년 8월 31일까지'}], 
+                   usableCouponCount: 0, usableCoupons: [] } 
       } 
     },
     methods: {

@@ -1,8 +1,8 @@
 <template>
    <section class="container">
-		<h1 class="pt21 pb13"> {{currentTitle}} <span class="br num">{{currentItems.length}}</span></h1>
-		<ul class="list-coupon mt5" v-if="currentItems.length">
-			<li class="modal-toggle" v-for="item in currentItems" :key="item.key" @click="showModal('modal-coupon')">
+		<h1 class="pt21 pb13"> {{couponTitle}} <span class="br num">{{couponData.length}}</span></h1>
+		<ul class="list-coupon mt5" v-if="couponData.length">
+			<li class="modal-toggle" v-for="item in couponData" :key="item.key" @click.prevent="toggleModal(item)">
 				<div class="img"><img :src="item.src" alt="" /></div>
 				<div class="txt">
 					{{item.title}}
@@ -18,15 +18,16 @@
 </template>
 
 <script>
-  import toggleMixin from './toggleMixin.js';
+  //import toggleMixin from './toggleMixin.js';
+  import {EventBus} from './main.js';
   export default {
-    mixins: [toggleMixin],
+    //mixins: [toggleMixin],
     components: {
      
     },
     props: {
-      currentTitle: String,
-      currentItems: {
+      couponTitle: String,
+      couponData: {
         type: Array
       }
     },
@@ -46,10 +47,13 @@
         }
     },
     mounted(){
-      console.log(this.currentItems)
+      console.log(this.couponData)
     },
     methods: {
-        
+        toggleModal(item){
+        console.log('data-', item)
+         EventBus.$emit('toggleModal', item)
+        }
       
     }
   }

@@ -1,9 +1,9 @@
 <template>
 <div>
-   <div id="modal-coupon" ref="modalCoupon" class="modal modal-coupon">
+   <div id="modal-coupon" ref="modalCoupon" class="modal modal-coupon" :class="{ 'is-visible': active }" >
       <div class="modal-overlay modal-toggle"></div>
       <div class="modal-wrapper">
-      	<a class="btn btn-cancel"><img src="./assets/images/icon-popup-close.png" alt="닫기" style="width:24px; height:24px"/></a>
+      	<a class="btn btn-cancel" @click.prevent="active = false" ><img src="./assets/images/icon-popup-close.png" alt="닫기" style="width:24px; height:24px"/></a>
         <div class="modal-content">
 	        <div class="scroll_">
 	        	<div class="mc-top">
@@ -12,8 +12,8 @@
 		        		<img src="./assets/images/img-coupon-ssg.png" alt="" />
 		        	</div>
 		        	<div class="cp-txt">
-		        		가나다라마바사아자차카파타하앓닭가나다라마바사아자차카파타하앓닭
-		        		<span class="br date">12월 31일까지</span>
+		        		{{item.couponDisplayTitle}}
+		        		<span class="br date">{{item.date}}</span>
 		        	</div>
 	        	</div>
 	        	
@@ -46,13 +46,22 @@
 
 <script>
 	import toggleMixin from './toggleMixin.js';
+	import {EventBus} from './main.js';
 	export default {
-		mixins: [toggleMixin],
+		//mixins: [toggleMixin],
 		data(){
 			return{
-				
+				active: false,
+				item:Array,
 			}
 		},
+		created() {
+            EventBus.$on('toggleModal', (item) => {
+				this.active = !this.active;
+				this.item = item;
+				console.log('this.item ', this.item )
+            });
+        },
 		methods: {
 			
 		}
