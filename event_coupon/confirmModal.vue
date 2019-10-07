@@ -1,12 +1,12 @@
 <template>
-   <div id="modal-confirm" class="modal modal-confirm">
+   <div id="modal-confirm" class="modal modal-confirm" ref="confirm" :class="{ 'is-visible': active }">
       <div class="modal-overlay modal-toggle"></div>
       <div class="modal-wrapper">
         <div class="modal-content">
          	 삭제하면 다시 사용할 수 없어요.<br>정말 삭제할까요?
         </div>
         <div class="_df btns">
-          <button class="btn btn-gr w50p btn-cancel">취소</button>
+          <button class="btn btn-gr w50p btn-cancel" @click.prevent="active = false">취소</button>
           <button class="btn btn-bl w50p btn-confirm">확인</button>
         </div>
       </div>
@@ -14,15 +14,28 @@
 </template>
 
 <script>
-
+    import {EventBus} from './main.js';
     export default {
         data(){
-            return{
-              
-            }
+           return {
+            active: false,
+            wh:window.innerHeight,
+            mcw : null,
+            mcwh: null,
+            marginTop:null,
+          }
         },
-        methods: {
-         
+        created() {
+          EventBus.$on('delete-coupon', (item) => {
+            this.active = !this.active;
+            console.log('confirm item',item)
+          })
+        },
+         mounted(){
+          this.mcw = this.$refs.confirm.children[1] || this.mcw;
+          //console.log('this.el',this.$refs.confirm.children[1])
+          this.mcwh = this.mcw.offsetHeight || this.mcwh;
+          this.mcw.style.marginTop = this.wh/2 - this.mcwh /2 + 'px';
         }
     }
 </script>

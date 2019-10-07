@@ -5,8 +5,9 @@
 			<li class="modal-toggle" v-for="item in couponData" :key="item.key" @click.prevent="toggleModal(item)">
 				<div class="img"><img :src="item.src" alt="" /></div>
 				<div class="txt">
-					{{item.title}}
-					<span class="date">{{item.date}}</span>
+					{{item.title.replace('\\n', '')}}
+					<span class="date" v-if="item.used">사용완료</span>
+					<span class="date" v-else>기간만료</span>
 				</div>
 			</li>
 		</ul>

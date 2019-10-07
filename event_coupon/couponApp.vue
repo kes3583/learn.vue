@@ -38,8 +38,9 @@
           hasTitle: '보유',
           expTitle: '만료',
           couponData: { noUsableCouponCount: 2, noUsableCoupons: [
-                   { couponDisplayTitle: '롯데상품권 교환권 5,000원', couponId: '20116730', src:'../assets/images/img-sb.png', title: '스타필드가면 시원한 스타벅스 아메리카노 20% 할인', date:'2020년 8월 31일까지'},
-                   { couponDisplayTitle: '신세계상품권 교환권 10,000원', couponId: '20121079', src:'../assets/images/img-sb.png', title: '스타필드가면 시원한 스타벅스 아메리카노 20% 할인', date:'2019년 8월 31일까지'}], 
+                   { couponDisplayTitle: "[롯데상품권 교환권]\\n5,000원 ", couponId: '20116730', src:'../assets/images/img-sb.png', title: "[롯데상품권 교환권]\\n5,000원 ", date:'2020년 8월 31일까지', used:true},
+                   { couponDisplayTitle: '신세계상품권 교환권 10,000원', couponId: '20121079', src:'../assets/images/img-sb.png', title: '스타필드가면 시원한 스타벅스 아메리카노 20% 할인', date:'2019년 8월 31일까지', used:false},
+                    { couponDisplayTitle: '롯데상품권 교환권 1,000원', couponId: '20221079', src:'../assets/images/img-sb.png', title: '치즈케잌 20% 할인', date:'2022년 8월 31일까지', used:true}], 
                    usableCouponCount: 0, usableCoupons: [] } 
       } 
     },

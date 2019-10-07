@@ -12,7 +12,8 @@
 		        		<img src="./assets/images/img-coupon-ssg.png" alt="" />
 		        	</div>
 		        	<div class="cp-txt">
-		        		{{item.couponDisplayTitle}}
+		        		<!-- {{item.couponDisplayTitle.replace('\\n', '')}} -->
+						 {{couponDisplayTitle}}
 		        		<span class="br date">{{item.date}}</span>
 		        	</div>
 	        	</div>
@@ -37,7 +38,7 @@
 	        </div>
         </div>
       <div class="_df btns">
-        <button class="btn btn-block btn-del" @click="showModal('modal-confirm')">사용하신 쿠폰은 삭제해주세요</button>
+        <button class="btn btn-block btn-del" @click.prevent="confirmModal">사용하신 쿠폰은 삭제해주세요</button>
       </div>
       </div>
     </div>
@@ -53,6 +54,7 @@
 			return{
 				active: false,
 				item:Array,
+				couponDisplayTitle: String,
 			}
 		},
 		created() {
@@ -60,10 +62,14 @@
 				this.active = !this.active;
 				this.item = item;
 				console.log('this.item ', this.item )
+				console.log(typeof this.item.couponDisplayTitle === 'string')
+				this.couponDisplayTitle = this.item.couponDisplayTitle.replace('\\n', '')
             });
         },
 		methods: {
-			
+			confirmModal(){
+				EventBus.$emit('delete-coupon')
+			}
 		}
 	}
 </script>
