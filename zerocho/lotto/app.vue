@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import rsp from './rsp.vue';
+  import rsp from './rockScissorsPaper.vue';
   export default {
     components: {
       'app-rsp': rsp,

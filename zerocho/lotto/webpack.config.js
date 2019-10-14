@@ -40,8 +40,8 @@ module.exports = {
         new VueLoaderPlugin(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: '로또',
-            filename: 'lotto.html',
+            title: '가위바위보',
+            filename: 'rockScissorsPaper.html',
             template: './index.html',
             hash: true,
         })
