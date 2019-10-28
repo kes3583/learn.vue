@@ -20,6 +20,11 @@ const score = {
   scissors : 0,
   paper :-1
 }
+const computerChoice = (imgCoords) => {
+  return Object.entries(rspCoords).find(function(v){
+    return v[1] === imgCoords;
+  })[0];
+}
 let interval = null;
 export default {
   data(){
@@ -57,6 +62,14 @@ export default {
         this.imgCoords = rspCoords.rock;
       }
      }, 200);
+  },
+  beforeUpdate(){
+    console.log('beforeDestroy')
+    clearInterval(interval);
+  },
+  updated(){
+    console.log('beforeDestroy')
+    clearInterval(interval);
   },
   beforeDestroy(){
     console.log('beforeDestroy')
